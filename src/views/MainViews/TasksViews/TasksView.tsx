@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { TasksTitle } from './TaskTitle';
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#228B22',
+      backgroundColor: '#F7FFF2',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -12,11 +13,11 @@ const styles = StyleSheet.create({
 
 export function TasksScreen()
     {
-      return(
-        <View style={styles.container}>
-
-            <Text>Задачи</Text>
-
-        </View>
-            )
+      return(<View style={styles.container}>
+               <TasksTitle/>
+               <View style={styles.container}>
+              
+              </View>
+             </View>
+           )
     }

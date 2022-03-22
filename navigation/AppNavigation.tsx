@@ -1,8 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useContext, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { AuthContext } from '../context/AuthContext';
-import { useAppSelector } from '../src/store/hooks';
+import { connect, useSelector } from 'react-redux';
+import { RootState} from '../redux/store';
 import { LoginScreen } from '../src/views/LoginViews/LogInView';
 import { MainTabs } from './MainNavigation';
  
@@ -10,14 +8,15 @@ export function AppView()
 {
     
     const Stack = createNativeStackNavigator();
-    //const [isAuth, setAuth] = useState(false);
+    
+    let isLogin = useSelector((state:RootState) => state.AuthReducer.LOG_IN);
 
-    const isLogin = useAppSelector(state => state.authReducer.isLogIn)
+    console.log('isLogin: '+isLogin);
 
     return(
     <Stack.Navigator>
         { isLogin ? (
-            <Stack.Screen options = {{headerShown: true}} name="Home" component={MainTabs} />
+            <Stack.Screen options = {{headerShown: false}} name="Home" component={MainTabs} />
         ):
         (
             <Stack.Screen options = {{headerShown: false}} name="LoginScreen" component={LoginScreen} />
